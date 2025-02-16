@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shirt Accessories - Harsh Enterprise</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* --------------------------
+       Global & Utility Styles
+    ----------------------------- */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    h1, h2 {
+      margin: 0 0 20px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* --------------------------
+       Product Grid & Cards
+    ----------------------------- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .product-image {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto;
+    }
+    .product-title {
+      font-size: 1.2em;
+      margin: 10px 0;
+      color: #333;
+    }
+    .product-price {
+      font-size: 1.4em;
+      color: #B12704;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+    .product-details {
+      text-align: left;
+      margin: 15px 0;
+      font-size: 0.9em;
+      color: #666;
+    }
+    .GET-Query {
+      background: #28a745;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+    .GET-Query:hover {
+      background: #218838;
+    }
+    
+    /* --------------------------
+       Footer
+    ----------------------------- */
+    footer {
+      text-align: center;
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    
+    /* --------------------------
+       Modal Overlay
+    ----------------------------- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      overflow-y: auto;
+    }
+    
+    /* --------------------------
+       Modal Content
+    ----------------------------- */
+    .modal-content {
+      background: #fff;
+      margin: 5% auto;
+      border: none;
+      width: 90%;
+      max-width: 700px;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    /* --------------------------
+       Modal Left: Product Preview
+    ----------------------------- */
+    .modal-product {
+      background: linear-gradient(135deg, #f9f9f9, #ececec);
+      width: 40%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #e0e0e0;
+    }
+    .modal-product img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    .modal-product p {
+      text-align: center;
+      font-size: 1.2em;
+      color: #B12704;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    
+    /* --------------------------
+       Modal Right: Contact Form
+    ----------------------------- */
+    .modal-form-container {
+      width: 60%;
+      padding: 30px 20px 20px 20px;
+      position: relative;
+      background: #fff;
+    }
+    /* Close Button */
+    .modal-form-container .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #999;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .modal-form-container .close:hover,
+    .modal-form-container .close:focus {
+      color: #333;
+    }
+    .modal-form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    .modal-form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #555;
+      font-size: 0.95em;
+    }
+    .modal-form input,
+    .modal-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+    }
+    .modal-form input:focus,
+    .modal-form textarea:focus {
+      border-color: #28a745;
+      outline: none;
+    }
+    /* Phone Input Group */
+    .phone-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .phone-group .country-code {
+      background: #eee;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      font-size: 1em;
+      color: #333;
+    }
+    .phone-group input {
+      flex: 1;
+      border-radius: 0 4px 4px 0;
+      border-left: none;
+    }
+    .modal-form button {
+      background: #28a745;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+    .modal-form button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo-container" style="text-decoration: none;">
+        <img src="images/harsh enterprise logo.png" alt="Harsh Enterprise Logo" style="height: 70px;">
+        <i><span class="company-name" style="color:whitesmoke;">HARSH ENTERPRISE</span></i>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Main Product Section -->
+  <section class="container">
+    <h1>Shirt Garment Accessories</h1>
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="images/shirt supporter.jpeg" alt="Shirt Supporter" class="product-image" style="height: 150px;" />
+        <h2 class="product-title">Shirt Supporter</h2>
+        <!-- Size Selector -->
+        <div class="size-selector" style="margin-top: 50px;">
+          <select id="sizeDropdown1" class="size-dropdown">
+            <option value="" disabled selected>Select Size</option>
+            <option data-price="3.8" data-type="per-piece">7X26 (₹3.8/piece)</option>
+            <option data-price="5" data-type="per-piece">8X26 (₹5/piece)</option>
+            <option data-price="375" data-type="per-kg">8X12 (₹375/10kg)</option>
+            <option data-price="375" data-type="per-kg">8X10 (₹375/10kg)</option>
+            <option data-price="375" data-type="per-kg">9X12 (₹375/10kg)</option>
+            <option data-price="375" data-type="per-kg">9X11 (₹375/10kg)</option>
+            <option data-price="375" data-type="per-kg">9X13 (₹375/10kg)</option>
+          </select>
+        </div>
+        <!-- Price Display -->
+        <div class="price-display" style="text-align: center;">
+          <span class="price">Price: ₹<span id="selectedPrice1"></span></span>
+          <p><strong>Material:</strong> high-quality</p>
+          <span id="priceType1" class="price-type"></span>
+        </div>
+        <button class="GET-Query" style="margin-top: 60px;">Get your best Price</button>
+      </div>
+      
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="images/putha collarpatti.jpg" alt="putha collarpatti" class="product-image" style="height: 170px;" />
+        <h2 class="product-title">putha collarpatti</h2>
+        <p class="product-price" style="margin-top: 40px;">₹40/kg</p>
+        <div class="product-details">
+          <p><strong>Material:</strong> high-quality</p>
+          <p><strong>Size:</strong> 13/14/15/16</p>
+          <p><strong>Colors:</strong> White</p>
+        </div>
+        <button class="GET-Query" style="margin-top: 65px;">Get your best Price</button>
+      </div>
+      
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="images/plastic collarpatti.jpeg" alt="Collar Supporters" class="product-image" />
+        <h2 class="product-title">Plastic collarpatti</h2>
+        <!-- Size Selector -->
+        <div class="size-selector">
+          <select id="sizeDropdown3" class="size-dropdown">
+            <option value="" disabled selected>Select Size</option>
+            <option data-price="120" data-type="per-piece">3.5*46*.35 (₹120/bundle)</option>
+            <option data-price="132" data-type="per-piece">3.5*46*.40 (₹132/bundle)</option>
+            <option data-price="76" data-type="per-piece">3*38*.35 (₹76/bundle)</option>
+            <option data-price="106" data-type="per-piece">3*40*.40 (₹106/bundle)</option>
+          </select>
+        </div>
+        <!-- Price Display -->
+        <div class="price-display" style="text-align: center;">
+          <span class="price">Price: ₹<span id="selectedPrice3"></span></span>
+          <p><strong>Material:</strong> high-quality</p>
+        </div>
+        <button class="GET-Query" style="margin-top: 78px;">Get your best Price</button>
+      </div>
+      
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img src="images/butter paper.webp" alt="butter paper" class="product-image" />
+        <h2 class="product-title">butter paper</h2>
+        <p class="product-price">₹different price as per size</p>
+        <div class="product-details">
+          <p><strong>Material:</strong> High-quality paper</p>
+          <p><strong>Use:</strong> Keeps shirt collars stiff and neat</p>
+          <p><strong>size :</strong> All Size Available</p>
+        </div>
+        <button class="GET-Query" style="margin-top: 10px;">Get your best Price</button>
+      </div>
+      
+      <!-- Product 5 -->
+      <div class="product-card">
+        <img src="images/shirt button.jpg" alt="Shirt Buttons" class="product-image" />
+        <h2 class="product-title">Premium Shirt Buttons</h2>
+        <p class="product-price">₹5/piece</p>
+        <div class="product-details">
+          <p><strong>Material:</strong> Resin</p>
+          <p><strong>Size:</strong> 1.5 cm diameter</p>
+          <p><strong>Colors:</strong> White, Black, Navy Blue</p>
+        </div>
+        <button class="GET-Query" style="margin-top: 60px;">Get your best Price</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Modal Pop-Up Form -->
+  <div id="queryModal" class="modal">
+    <div class="modal-content">
+      <!-- Left Side: Product Preview -->
+      <div class="modal-product" id="modalProductPreview">
+        <!-- Product image and price will be injected here -->
+      </div>
+      <!-- Right Side: Contact Form -->
+      <div class="modal-form-container">
+        <span class="close">&times;</span>
+        <h2>Contact Us</h2>
+        <form id="queryForm" class="modal-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="a217b657-1d55-4323-b842-bd3790cd38ed">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <!-- Phone Number Field with Country Code -->
+          <label for="phone">Phone Number:</label>
+          <div class="phone-group">
+            <span class="country-code" style="margin-right: 10px;">+91</span>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your number" required style="margin-top: 20px;" />
+          </div>
+          <label for="message">Your Query:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+          <button type="submit">Submit Query</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Harsh Enterprise. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <script>
+    // Set the current year in the footer.
+    document.getElementById("year").textContent = new Date().getFullYear();
+    
+    // Function to update price display for a specific product
+   // Function to update price display for a specific product
+function updatePriceDisplay(dropdownId, priceId, priceTypeId) {
+  const sizeDropdown = document.getElementById(dropdownId);
+  const selectedPrice = document.getElementById(priceId);
+  const priceType = document.getElementById(priceTypeId);
+
+  if (sizeDropdown && selectedPrice && priceType) {
+    sizeDropdown.addEventListener('change', function () {
+      const selectedOption = this.options[this.selectedIndex];
+      const price = selectedOption.getAttribute('data-price');
+      const type = selectedOption.getAttribute('data-type');
+      selectedPrice.textContent = price;
+      priceType.textContent = type === 'per-piece' ? '/piece' : (type === 'per-kg' ? '/10kg' : '');
+    });
+  }
+}
+
+// Initialize price display for Product 1
+updatePriceDisplay('sizeDropdown1', 'selectedPrice1', 'priceType1');
+
+// Initialize price display for Product 3
+updatePriceDisplay('sizeDropdown3', 'selectedPrice3', 'priceType3');
+
+// Modal functionality
+const modal = document.getElementById("queryModal");
+const closeBtn = document.querySelector(".modal-form-container .close");
+const queryButtons = document.querySelectorAll(".GET-Query");
+const modalProductPreview = document.getElementById("modalProductPreview");
+const queryForm = document.getElementById("queryForm");
+
+// Variables to store product details
+let selectedProductName = "";
+let selectedProductSize = "";
+let selectedProductPrice = "";
+
+// Open modal when any Get Query button is clicked
+queryButtons.forEach(button => {
+  button.addEventListener("click", (event) => {
+    const productCard = event.target.closest('.product-card');
+    let productImgHTML = "";
+    let productPriceHTML = "";
+
+    if (productCard) {
+      // Extract product name
+      const productTitle = productCard.querySelector('.product-title');
+      selectedProductName = productTitle ? productTitle.textContent : "";
+
+      // Extract product image
+      const productImg = productCard.querySelector('.product-image');
+      if (productImg) {
+        productImgHTML = `<img src="${productImg.src}" alt="Product Image">`;
+      }
+
+      // Check for a size dropdown (i.e., Product 1 or Product 3)
+      const dropdown = productCard.querySelector('.size-dropdown');
+      if (dropdown) {
+        const selectedOption = dropdown.options[dropdown.selectedIndex];
+        if (selectedOption && !selectedOption.disabled) {
+          const price = selectedOption.getAttribute('data-price');
+          const type = selectedOption.getAttribute('data-type');
+          selectedProductSize = selectedOption.textContent;
+          selectedProductPrice = `₹${price}${type === 'per-piece' ? '/piece' : (type === 'per-kg' ? '/10kg' : '')}`;
+          productPriceHTML = `<p>Price: ${selectedProductPrice}</p>`;
+        } else {
+          selectedProductSize = "Not selected";
+          selectedProductPrice = "Not selected";
+          productPriceHTML = `<p>Price not selected</p>`;
+        }
+      } else {
+        // For products without a dropdown
+        let productPriceElem = productCard.querySelector('.product-price') ||
+                               productCard.querySelector('.price-display');
+        let productPriceText = productPriceElem ? productPriceElem.textContent.trim() : "";
+        if (!productPriceText || productPriceText === "Price: ₹") {
+          productPriceText = "Price not selected";
+        }
+        selectedProductPrice = productPriceText;
+        productPriceHTML = `<p>${productPriceText}</p>`;
+      }
+
+      modalProductPreview.innerHTML = productImgHTML + productPriceHTML;
+    }
+    modal.style.display = "block";
+  });
+});
+
+// Close modal when the close button is clicked
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Close modal when clicking outside the modal content
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+// Handle form submission
+queryForm.addEventListener("submit", (event) => {
+  // Prevent the default form submission
+  event.preventDefault();
+
+  // Add hidden inputs for product details
+  const productNameInput = document.createElement("input");
+  productNameInput.type = "hidden";
+  productNameInput.name = "product_name";
+  productNameInput.value = selectedProductName;
+
+  const productSizeInput = document.createElement("input");
+  productSizeInput.type = "hidden";
+  productSizeInput.name = "product_size";
+  productSizeInput.value = selectedProductSize;
+
+  const productPriceInput = document.createElement("input");
+  productPriceInput.type = "hidden";
+  productPriceInput.name = "product_price";
+  productPriceInput.value = selectedProductPrice;
+
+  // Append hidden inputs to the form
+  queryForm.appendChild(productNameInput);
+  queryForm.appendChild(productSizeInput);
+  queryForm.appendChild(productPriceInput);
+
+  // Submit the form
+  queryForm.submit();
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Corrugated Box & Duplex Shirt Manufacturing</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Ensuring the product items are in a row */
+        .product-list {
+            display: flex;
+            justify-content: center;  /* Center items horizontally */
+            gap: 20px;  /* Space between items */
+            flex-wrap: wrap; /* Wrap to next line on smaller screens */
+        }
+
+        .product-item {
+            text-align: center;
+            width: 300px; /* Fixed width for each item */
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-item:hover {
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+        
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            background: #222;
+            color: #fff;
+            padding: 15px;
+            font-size: 14px;
+        }
+        
+
+        /* Removing default link styling */
+        .product-item a {
+            text-decoration: none;
+            color: inherit;
+            display: block; /* Makes the whole div clickable */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo-container" style="text-decoration: none;">
+                <img src="images/harsh enterprise logo.png" alt="Harsh Enterprise Logo" style="height: 70px;">
+                <i><span class="company-name" style="color:whitesmoke;">HARSH ENTERPRISE</span></i>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul> 
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="products">
+       <!-- Inside products.html -->
+<div class="product-list">
+    <a href="products-corrugated.html" class="product-link">
+        <div class="product-item">
+            <img src="images/corrugated box.jpg" alt="Corrugated Box">
+            <h2>Corrugated Boxes</h2>
+            <p>High-quality corrugated boxes for all your packaging needs.</p>
+        </div>
+    </a>
+    
+  
+    <a href="products-acessories.html" class="product-link"> <!-- Updated link -->
+        <div class="product-item">
+            <img src="images/shirt supporter.jpeg" alt="Shirt Accessories" s>
+            <h2>Shirt Garment Accessories</h2>
+            <p>Wide range of accessories for shirt manufacturing.</p>
+        </div>
+    </a>
+</div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Harsh Enterprise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    
+</body>
+</html>

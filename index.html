@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="color: red;">HARSH ENTERPRISE</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+
+            .header-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+            }
+            .logo-container {
+                
+                display: flex;
+                align-items:center;
+                margin-right: auto; /* Added line */
+            }
+            .logo-container img {
+                height: 50px;
+                margin-right: 10px;
+            }
+            .company-name {
+                font-size: 20px;
+                font-weight: bold;
+                margin-right: 100PX
+                ;
+            }
+            .feature-item {
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .feature-item img {
+                max-width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-bottom: 15px;
+            }
+            .features-products {
+                font-size: 32px;
+                font-weight: bold;
+                margin-bottom: 30px;
+                color: #333;}
+            
+            @media (max-width: 768px) {
+                    .header-container {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                    .logo-container {
+                        margin-bottom: 10px;
+                    }
+                    .feature-item img {
+                        margin-left: 0;
+                    }
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo-container" style="text-decoration: none;">
+            <div class="logo-container">
+                <img src="images/harsh enterprise logo.png" alt="Harsh Enterprise Logo" style="height: 70px;">
+             <i>   <span class="company-name" style="color:whitesmoke;">HARSH ENTERPRISE</span></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+           <i> <h1>Welcome to Harsh Enterprise</h1></i>
+          <h3>  <p>We specialize in high-quality corrugated boxes, duplex shirts, and retail of shirt garment accessories.</p></h3>
+            <a href="products.html" class="btn">Explore Our Products</a>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+           <strong><i> <h2 class="features-products">Our Products:</h2></i></strong>
+            <div class="feature-item">
+                <img src="images/cake box.jpg" alt="Corrugated Boxes">
+                <img src="images/corrugated box.jpg" style="margin-left: 100px;">
+                <h1>1)Corrugated Boxes</h1>
+                <p>Durable and customizable packaging solutions for your business needs.</p>
+                <a href="products-corrugated.html" class="btn">Explore  corrugated Section</a>
+            </div>
+      
+            <div class="feature-item">
+                <img src="images/shirt supporter.jpeg" alt="Corrugated Boxes">
+                <img src="images/plastic collarpatti.jpeg" style="margin-left: 200px;">
+
+                <h1>2)Garment Accessories</h1>
+                <p>Wide range of accessories to complement your shirt manufacturing.</p>
+                <a href="products-acessories.html" class="btn">Explore  Garment Accessories</a>
+            </div>
+           
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2>Contact Us:</h2>
+            <div class="contact-item">
+                <h3>1)Mohammed Ali Ghoghawala:</h3>
+                <p>📞 <a href="tel:9016973834">9016973834</a></p>
+                <p>📧 <a href="mailto:mohdalighoghawala09@gmail.com">mohdalighoghawala9@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <h3>2)Mohammed Rashid Ghoghawala:</h3>
+                <p>📞 <a href="tel:7600390051">7600390051</a></p>
+                <p>📧 <a href="mailto:ghoghawalarashid99@gmail.com">ghoghawalarashid99@gmail.com</a></p>
+            </div>
+        
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Harsh Enterprise. All rights reserved.</p>
+            <strong> CREATED BY : Mohammed Rashid Ghoghawala</strong>
+
+        </div>
+    </footer>
+</body>
+</html>
