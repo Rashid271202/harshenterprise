@@ -333,4 +333,20 @@ footer {
                         margin-left: 0;
                     }
                 }
+           /* Desktop image offsets */
+    .product-image-offset {
+        margin-left: 100px;
+    }
     
+    .product-image-offset-large {
+        margin-left: 200px;
+    }
+    
+    /* Remove image offsets on mobile */
+    @media (max-width: 768px) {
+        .product-image-offset,
+        .product-image-offset-large {
+            margin-left: 0;
+        }
+    }
+        
