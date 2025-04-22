@@ -349,4 +349,20 @@ footer {
             margin-left: 0;
         }
     }
+    .company-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: whitesmoke;
+    margin-right: 100px;
+}
+
+/* Mobile-specific adjustment */
+@media (max-width: 768px) {
+    .company-name {
+        font-size: 18px;
+        margin-right: 0;
+        margin-top: 10px;
+    }
+}
+
         
