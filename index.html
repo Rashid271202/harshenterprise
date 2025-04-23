@@ -64,6 +64,8 @@
                 <img src="images/harsh enterprise logo.png" alt="Harsh Enterprise Logo" style="height: 70px;">
                 <span class="company-name">HARSH ENTERPRISE</span>
             </div>
+                <!-- Hamburger Button for Mobile -->
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -127,5 +129,12 @@
 
         </div>
     </footer>
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector('nav ul');
+        nav.classList.toggle('show');
+    }
+</script>
+
 </body>
 </html>
