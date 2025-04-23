@@ -64,16 +64,16 @@
                 <img src="images/harsh enterprise logo.png" alt="Harsh Enterprise Logo" style="height: 70px;">
                 <span class="company-name">HARSH ENTERPRISE</span>
             </div>
-                <!-- Hamburger Button for Mobile -->
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
+           <nav>
+              <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+              <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+                <li><a href="about.html" onclick="closeMobileMenu()">About Us</a></li>
+                <li><a href="products.html" onclick="closeMobileMenu()">Products</a></li>
+                <li><a href="contact.html" onclick="closeMobileMenu()">Contact Us</a></li>
+              </ul>
             </nav>
+
         </div>
     </header>
 
@@ -130,10 +130,15 @@
         </div>
     </footer>
 <script>
-    function toggleMenu() {
-        const nav = document.querySelector('nav ul');
-        nav.classList.toggle('show');
-    }
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+  }
+
+  function closeMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.remove('active');
+  }
 </script>
 
 </body>
