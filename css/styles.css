@@ -1,4 +1,4 @@
-/* General Styles */
+ /* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    background: black;
+    background:black;
     color: #fff;
     padding: 20px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -24,10 +24,10 @@ header {
 header .logo img {
     height: 50px;
 }
-
 nav {
-    margin-left: auto;
+  margin-left: auto;
 }
+
 
 nav ul {
     list-style: none;
@@ -143,7 +143,6 @@ footer {
     padding: 20px 0;
     margin-top: 50px;
 }
-
 /* Dropdown Styling */
 .size-selector {
     margin: 15px 0;
@@ -175,7 +174,6 @@ footer {
     color: #555;
     margin-left: 5px;
 }
-
 /* Product Card Styling */
 .product-card {
     border: 1px solid #ddd;
@@ -264,26 +262,94 @@ footer {
 .buy-button:hover {
     background-color: #F7CA00;
 }
-
-/* Header Styles */
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-
 .logo-container {
     display: flex;
-    align-items: center;
-    margin-right: auto;
+    align-items:center;
+    margin-right: auto; /* Added line */
 }
-
 .logo-container img {
     height: 50px;
     margin-right: 10px;
 }
-
 .company-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 100PX
+    ;
+}
+
+/*contact us*/
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 20px;
+        background: #f8f8f8;
+        text-align: center;
+    }
+    .footer-container p {
+        flex: 1 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #555;
+    }
+    .contact-left, .contact-right {
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+    }
+    .contact-left h3, .contact-right h3 {
+        font-size: 18px;
+        color: #222;
+        margin-bottom: 5px;
+    }
+    .contact-left p, .contact-right p {
+        font-size: 14px;
+        color: #444;
+    }
+    .contact-left a, .contact-right a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .contact-left a:hover, .contact-right a:hover {
+        text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+                    .header-container {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                    .logo-container {
+                        margin-bottom: 10px;
+                    }
+                    .feature-item img {
+                        margin-left: 0;
+                    }
+                }
+           /* Desktop image offsets */
+    .product-image-offset {
+        margin-left: 100px;
+    }
+    
+    .product-image-offset-large {
+        margin-left: 200px;
+    }
+    
+    /* Remove image offsets on mobile */
+    @media (max-width: 768px) {
+        .product-image-offset,
+        .product-image-offset-large {
+            margin-left: 0;
+        }
+    }
+    .company-name {
     font-size: 24px;
     font-weight: bold;
     color: whitesmoke;
@@ -297,62 +363,4 @@ footer {
         margin-right: 0;
         margin-top: 10px;
     }
-
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .logo-container {
-        margin-bottom: 10px;
-    }
-
-    .feature-item img {
-        margin-left: 0;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        background-color: #000;
-        position: absolute;
-        top: 80px;
-        right: 20px;
-        width: 200px;
-        border-radius: 8px;
-        padding: 10px 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        z-index: 999;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        padding: 8px 16px;
-        display: block;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .header-container {
-        position: relative;
-    }
-}
-
-/* Default styles for hamburger */
-.hamburger {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
 }
