@@ -350,16 +350,6 @@ footer {
     }
 }
 
-/* Desktop image offsets */
-.product-image-offset {
-    margin-left: 10%;
-}
-
-/* Active menu */
-nav ul li a.active {
-    color: #FFD814;
-}
-
 /* Default styles for hamburger */
 .hamburger {
     display: none;
